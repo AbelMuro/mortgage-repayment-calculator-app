@@ -1,0 +1,42 @@
+@font-face {
+    font-family: 'PlusJakartaSans';
+    src: url('/public/fonts/PlusJakartaSans-VariableFont_wght.ttf');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PlusJakartaSans';
+    src: url('/public/fonts/PlusJakartaSans-Italic-VariableFont_wght.ttf');
+    font-style: italic;
+}
+
+* {
+    box-sizing: border-box;
+    transition: all 0.2s linear;
+}
+
+body{
+    margin: 0px;
+    min-height: 100vh;
+    background-color: var(--color-slate-100, #E4F4FD);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+:root{
+    --font: 'PlusJakartaSans';
+    --closest: 100;
+    --closer: 75;
+    --close: 50;
+    --far: 25;
+    --farthest: 1;
+}
+
+.container{
+    width: 1008px;
+    background-color: white;
+    border-radius: 24px;
+    display: flex;
+}
+
