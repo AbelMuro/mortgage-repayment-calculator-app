@@ -3,6 +3,8 @@ import images from './images';
 import {useSelector} from 'react-redux';
 import * as styles from './styles.module.css';
 
+//now i need to recalculate the mortgage based on the mortgage type
+
 function Results() {
     const userInput = useSelector(state => state);
 
