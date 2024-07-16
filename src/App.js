@@ -1,12 +1,18 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import Store from './Store';
 import Calculator from './Components/Calculator';
+import Results from './Components/Results';
 import './styles.css';
 
 function App() {
     return(
-        <main className='container'>
-            <Calculator/>
-        </main>
+        <Provider store={Store}>
+            <main className='container'>
+                <Calculator/>
+                <Results/>
+            </main>            
+        </Provider>
     )
 }
 

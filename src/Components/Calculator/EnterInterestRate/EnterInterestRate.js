@@ -37,6 +37,7 @@ function EnterInterestRate() {
                     type='number' 
                     style={error ? {border: '1px solid #D73328'} : {}}
                     className={styles.input}
+                    name='interestRate'
                     value={rate}
                     onChange={handleRate}
                     onBlur={handleBlur}

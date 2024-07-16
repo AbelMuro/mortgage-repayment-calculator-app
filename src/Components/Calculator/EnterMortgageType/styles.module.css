@@ -6,6 +6,7 @@
     border: none;
     margin: 0px;
     padding: 0px;
+    position: relative;
 }
 
 .container > h1{
@@ -36,6 +37,7 @@
     border: 1px solid var(--color-slate-700, #4E6E7E);
     position: relative;
     transition: all 0.2s linear, border 0s;
+    cursor: pointer;
 }
 
 .radio > input {
@@ -57,6 +59,7 @@
     font-size: 1.125rem;
     font-style: normal;
     font-weight: 700;
+    cursor: pointer;
     line-height: 125%; /* 22.5px */
 }
 
@@ -70,4 +73,13 @@
     position: absolute;
     left: 0px;
     bottom: -33px
+}
+
+.hiddenInput{
+    width: 0px;
+    height: 0px;
+    border: none;
+    padding: 0px;
+    position: absolute;
+
 }

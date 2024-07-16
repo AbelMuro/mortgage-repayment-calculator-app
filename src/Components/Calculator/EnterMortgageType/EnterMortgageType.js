@@ -1,17 +1,23 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import icons from './icons';
 import * as styles from './styles.module.css';
 
-
-//this is where i left off, i will need to find a way to trigger the error state in this component
 function EnterMortgageType() {
-    const [type, setType] = useState('repayment');
+    const [type, setType] = useState('');
     const [error, setError] = useState('');
 
     const handleType = (e) => {
+        setError('');
         setType(e.target.value);
     }
 
+    const handleInvalid = () => {
+        setError('empty')
+    }
+
+    useEffect(() => {
+        console.log(type)
+    }, [type])
 
     return(
         <fieldset className={styles.container}>
@@ -28,7 +34,6 @@ function EnterMortgageType() {
                             <input 
                                 type='radio' 
                                 id='repayment' 
-                                name='mortgageType' 
                                 value='repayment'
                                 checked={type === 'repayment'}
                                 onChange={handleType}
@@ -50,8 +55,8 @@ function EnterMortgageType() {
                             <input 
                                 type='radio' 
                                 id='interest only' 
-                                name='mortgageType' 
                                 value='interest only'
+                                checked={type === 'interest only'}
                                 onChange={handleType}
                                 />       
                             {type === 'interest only' && <img src={icons['radio']} /> }            
@@ -65,6 +70,14 @@ function EnterMortgageType() {
                     This field is required
                 </div>
             }
+            <input 
+                type='text' 
+                className={styles.hiddenInput} 
+                value={type} 
+                onChange={() => {}} 
+                name='mortgageType' 
+                onInvalid={handleInvalid} 
+                required />
         </fieldset>
     )
 }

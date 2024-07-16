@@ -38,6 +38,7 @@ function EnterTerm() {
                     style={error ? {border: '1px solid #D73328'} : {}}
                     className={styles.input}
                     value={term}
+                    name='mortgageTerm'
                     onChange={handleTerm}
                     onBlur={handleBlur}
                     onInvalid={handleInvalid}
