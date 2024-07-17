@@ -24,22 +24,28 @@ function Calculator() {
         }});
     }
 
+    const handleClear = () => {
+        location.reload();
+    }
+
     return(
         <form className={styles.container} onSubmit={handleSubmit}>
-            <fieldset className={styles.header}>
+            <div className={styles.header}>
                 <h1>
                     Mortgage Calculator
                 </h1>         
-                <a> 
+                <a onClick={handleClear}> 
                     Clear All    
                 </a>       
-            </fieldset>
-            <EnterMortgage/>
-            <div className={styles.inputContainer}>
-                <EnterTerm/>  
-                <EnterInterestRate/>              
             </div>
-            <EnterMortgageType/>
+            <div className={styles.inputs}>
+                <EnterMortgage/>
+                <div className={styles.inputContainer}>
+                    <EnterTerm/>  
+                    <EnterInterestRate/>              
+                </div>
+                <EnterMortgageType/>                
+            </div>
             <button className={styles.submit}>
                 <img src={icons['calculator']}/>
                 Calculate Repayments

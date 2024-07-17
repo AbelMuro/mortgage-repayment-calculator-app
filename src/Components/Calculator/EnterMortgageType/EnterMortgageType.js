@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import icons from './icons';
 import * as styles from './styles.module.css';
 
@@ -14,10 +14,6 @@ function EnterMortgageType() {
     const handleInvalid = () => {
         setError('empty')
     }
-
-    useEffect(() => {
-        console.log(type)
-    }, [type])
 
     return(
         <fieldset className={styles.container}>

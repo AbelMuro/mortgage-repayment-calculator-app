@@ -1,26 +1,40 @@
-import React, {useMemo} from 'react';
+import React, {useState, useEffect} from 'react';
 import images from './images';
 import {useSelector} from 'react-redux';
 import * as styles from './styles.module.css';
 
-//now i need to recalculate the mortgage based on the mortgage type
+//need to work on the responsiveness of this component
 
 function Results() {
     const userInput = useSelector(state => state);
+    const [results, setResults] = useState('');
+    const [interest, setInterest] = useState('')
+    const type = userInput.mortgageType;
 
-    const results = useMemo(() => {
+    const getTotal = (interest, mortgage) => {
+        const mort = Number(mortgage.replaceAll(',', ''));
+        const results = mort + interest;
+        return formatNumber(results);
+    }
+
+    const formatNumber = (number) => {
+        return number.toLocaleString('en-US', {
+            useGrouping: true,
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        })
+    }
+
+    useEffect(() => {
         if(!userInput.mortgage) 
             return;
         const mortgage = Number(userInput.mortgage.replaceAll(',', ''));
         const term = Number(userInput.mortgageTerm) * 12;
         const interestRate = (Number(userInput.interestRate)/100)/12;
-        const type = userInput.mortgageType;
-        const result = (mortgage * interestRate * (1 + interestRate)**term)/(((1 + interestRate)**term) - 1)
-        return result.toLocaleString('en-US', {
-            useGrouping: true,
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        });
+        const monthlyPayments = (mortgage * interestRate * (1 + interestRate)**term)/(((1 + interestRate)**term) - 1);
+        const interestTotal = (monthlyPayments * term) - mortgage;
+        setInterest(interestTotal);
+        setResults(monthlyPayments); 
     }, [userInput])
 
     return(
@@ -40,10 +54,10 @@ function Results() {
                     <div className={styles.results_box}>
                         <div>
                             <h2>
-                                Your monthly repayments
+                                {type === 'repayment' ? 'Your monthly repayments' : 'Total Interest'}
                             </h2>
                             <strong className={styles.results_payments}>
-                                £{results}
+                                £{type === 'repayment' ? formatNumber(results) : formatNumber(interest)}
                             </strong>
                         </div>
                         <div className={styles.separator}></div>
@@ -52,7 +66,7 @@ function Results() {
                                 Total you'll repay over the term
                             </h2>
                             <strong className={styles.results_total}>
-                                £539,322.94
+                                £{getTotal(interest, userInput.mortgage)}
                             </strong>
                         </div>
                     </div>
