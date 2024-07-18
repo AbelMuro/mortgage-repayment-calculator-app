@@ -10,7 +10,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: 125%; /* 70px */
-    overflow-x: hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
     position: relative;
 }
