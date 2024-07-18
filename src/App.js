@@ -5,6 +5,8 @@ import Calculator from './Components/Calculator';
 import Results from './Components/Results';
 import './styles.css';
 
+//i will need to test out this app with some other mortgage calculator
+
 function App() {
     return(
         <Provider store={Store}>
