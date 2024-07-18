@@ -1,5 +1,5 @@
 .container{
-    width: 100%;
+    width: 504px;
     height: 635px;
     background-color: #133041;
     border-bottom-left-radius: 80px;
@@ -9,6 +9,7 @@
     justify-content: center;
     align-items: center;
     padding: 40px;
+    transition: all 0.2s linear, width 0s;
 }
 
 .empty{
@@ -84,15 +85,15 @@
 }
 
 .results_box{
+    width: 424px;
     border-radius: var(--spacing-100, 8px);
     border-top: 4px solid var(--color-lime, #D8DB2F);
     background-color: rgba(0, 0, 0, 0.25);
-    width: 100%;
     padding: 32px;
     display: flex;
     flex-direction: column;
     gap: 32px;
-
+    transition: all 0.2s linear, width 0s;
 }
 
 .results_box > div{
@@ -111,15 +112,6 @@
     margin: 0px;
 }
 
-.results_payments{
-    color: var(--color-lime, #D8DB2F);
-    font-family: var(--font);
-    font-size: 3.5rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 125%; /* 70px */
-}
-
 .separator{
     background-color: #9ABED540;
     width: 100%;
@@ -136,15 +128,41 @@
     line-height: 125%; /* 30px */
 }
 
-@media(max-width: 955px){
+
+@media(max-width: 1000px){
     .container{
+        width: 100%;
         height: auto;
         border-bottom-left-radius: 24px;
         border-top-right-radius: 0px;
         border-bottom-right-radius: 24px;
     }
 
+    .results_box{
+        width: 100%;
+    }
+
     .empty > p{
         width: 90%;
+    }
+}
+
+
+@media(max-width: 530px){
+    .container{
+        border-radius: 0px;
+        padding: 32px 24px;
+    }
+    .empty > p{
+        width: 100%;
+    }
+
+    .results{
+        gap: 24px;
+    }
+
+    .results_box{
+        padding: 24px 16px;
+        gap: 16px;
     }
 }

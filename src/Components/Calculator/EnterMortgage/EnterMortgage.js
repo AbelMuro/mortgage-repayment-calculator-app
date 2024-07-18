@@ -39,6 +39,7 @@ function EnterMortgage() {
                     type='text' 
                     style={error ? {border: '1px solid #D73328'} : {}}
                     className={styles.input} 
+                    autocomplete='on'
                     value={mortgage} 
                     onBlur={handleBlur}                    
                     onChange={handleMortgage}

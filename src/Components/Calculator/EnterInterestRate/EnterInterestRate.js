@@ -38,6 +38,7 @@ function EnterInterestRate() {
                     style={error ? {border: '1px solid #D73328'} : {}}
                     className={styles.input}
                     name='interestRate'
+                    autocomplete='off'
                     value={rate}
                     onChange={handleRate}
                     onBlur={handleBlur}

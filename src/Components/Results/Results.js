@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
+import DisplayResults from './DisplayResults';
 import images from './images';
 import {useSelector} from 'react-redux';
 import * as styles from './styles.module.css';
-
-//need to work on the responsiveness of this component
 
 function Results() {
     const userInput = useSelector(state => state);
@@ -56,9 +55,8 @@ function Results() {
                             <h2>
                                 {type === 'repayment' ? 'Your monthly repayments' : 'Total Interest'}
                             </h2>
-                            <strong className={styles.results_payments}>
-                                £{type === 'repayment' ? formatNumber(results) : formatNumber(interest)}
-                            </strong>
+                            <DisplayResults results={type === 'repayment' ? `£${formatNumber(results)}` : `£${formatNumber(interest)}`}/>
+    
                         </div>
                         <div className={styles.separator}></div>
                         <div>
