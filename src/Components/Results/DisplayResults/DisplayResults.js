@@ -6,7 +6,8 @@ function DisplayResults({results}) {
     const resultsRef = useRef();
 
     const handleDisplay = () => {
-        if(isOverflowing(resultsRef.current)) return;
+        if(!isOverflowing()) 
+            return;
         setDisplay(true);
     }
 
@@ -14,8 +15,8 @@ function DisplayResults({results}) {
         setDisplay(false);
     }
 
-    const isOverflowing = (element) => {
-        return element.scrollWidth > element.clientWidth;
+    const isOverflowing = () => {
+        return resultsRef.current.scrollWidth > resultsRef.current.clientWidth;
     }
 
     return(

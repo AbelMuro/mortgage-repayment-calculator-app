@@ -39,7 +39,7 @@ function EnterTerm() {
                     className={styles.input}
                     value={term}
                     name='mortgageTerm'
-                    autocomplete='off'
+                    autoComplete='off'
                     onChange={handleTerm}
                     onBlur={handleBlur}
                     onInvalid={handleInvalid}

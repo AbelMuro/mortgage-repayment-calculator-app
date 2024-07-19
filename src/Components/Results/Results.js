@@ -56,7 +56,6 @@ function Results() {
                                 {type === 'repayment' ? 'Your monthly repayments' : 'Total Interest'}
                             </h2>
                             <DisplayResults results={type === 'repayment' ? `£${formatNumber(results)}` : `£${formatNumber(interest)}`}/>
-    
                         </div>
                         <div className={styles.separator}></div>
                         <div>
