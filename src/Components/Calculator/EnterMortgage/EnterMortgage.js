@@ -9,7 +9,7 @@ function EnterMortgage() {
         let input = e.target.value;
         input = input.replaceAll(',', '');
 
-        if(input.match(/\D/) || Number(input) >= 100000000)
+        if(input.match(/\D/) || Number(input) >= Number.MAX_SAFE_INTEGER)
             return;
 
         e.target.setCustomValidity('');
