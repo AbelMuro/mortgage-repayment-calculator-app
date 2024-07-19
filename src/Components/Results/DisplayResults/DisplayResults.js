@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import * as styles from './styles.module.css'
 
 function DisplayResults({results}) {
     const [display, setDisplay] = useState(false);
+    const resultsRef = useRef();
 
     const handleDisplay = () => {
+        if(isOverflowing(resultsRef.current)) return;
         setDisplay(true);
     }
 
@@ -12,8 +14,12 @@ function DisplayResults({results}) {
         setDisplay(false);
     }
 
+    const isOverflowing = (element) => {
+        return element.scrollWidth > element.clientWidth;
+    }
+
     return(
-            <div className={styles.results_payments} onMouseEnter={handleDisplay} onMouseLeave={handleHide}>
+            <div className={styles.results_payments} onMouseEnter={handleDisplay} onMouseLeave={handleHide} ref={resultsRef}>
                 {results}
                 {display && <div className={styles.popup}>
                     {results}
